@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PmTool</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= link_to "Home", root_path %> |  
+<%= link_to "About Us", about_path %> | 
+<%= link_to "Contact Us", contact_path %>
+<%= link_to "All Projects", projects_path %>
+<hr>
+<br>
+
+<%= form_tag("/search", method: "get") do %>
+  		<%= label_tag(:search_word, "Search for:") %>
+  		<%= text_field_tag(:search_word) %>
+  		<%= submit_tag("Search") %>
+	<% end %>
+
+<%= yield %>
+
+</body>
+</html>

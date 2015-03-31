@@ -1,0 +1,25 @@
+<%# form for creating new project, and displaying errors if need be %>
+<% if @project.errors.any? %>
+	<% @project.errors.full_messages.each do |message| %>
+		<%= message %>
+	<% end %>
+<% end %>
+
+
+
+<%= form_for @project do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br >
+	<br >
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+	<br >
+	<br >
+	<%= f.label :due_date %>
+	<%= f.text_field :due_date %>
+	<br>
+	<br>
+	<%= f.submit %>
+
+<% end %>

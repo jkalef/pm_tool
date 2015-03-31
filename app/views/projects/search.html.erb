@@ -1,0 +1,10 @@
+<h1>Here are projects that match your search results:</h1>
+
+<% @result.each do |result| %>
+	<%= link_to result.title, project_path(result) %>
+	<br>
+	<%= result.description %>
+	<br>
+	<hr>
+
+<% end %>

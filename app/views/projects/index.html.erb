@@ -1,0 +1,22 @@
+<h1>List of your current projects</h1>
+
+
+<table class="table">
+	<tr>
+		<th>Project Title</th>
+		<th>Project Description</th>
+		<th>Project Due Date</th>
+		<th>View Project</th>
+		<th>Edit Project</th>
+	</tr>
+	<% @projects.each do |project| %>
+		<tr>
+			<td><%= project.title %></td>
+			<td><%= project.description %></td>
+			<td><%= project.due_date %></td>
+			<td><%= link_to "Edit", edit_project_path(project) %></td>
+			<td><%= link_to "View", project_path(project) %></td>
+		</tr>
+	<% end %>
+</table>
+
