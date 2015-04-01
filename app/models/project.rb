@@ -1,12 +1,16 @@
 class Project < ActiveRecord::Base
 
+	#---ASSOCIATIONS-----------------------------
+	has_many :discussions, dependent: :destroy
+
+
 	#VALIDATIONS----------------------------------
 	validates :title, presence: true,
 	                  uniqueness: true
 
 	validates :description, :due_date, presence: true
 
-	#--------------------------------------------
+	#----------------------------------------------
 
 
 	#CLASS METHODS----------------------------------

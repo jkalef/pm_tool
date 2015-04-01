@@ -12,3 +12,31 @@
 <%= link_to "Edit", edit_project_path(@project) %>
 <br>
 <%= button_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
+
+<br>
+<br>
+<%# add a form to add a new discussion to this project %>
+<%= form_for @discussion, url: project_discussions_path(@project) do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+	<br>
+	<%= f.submit "Submit Discussion" %>
+<% end %>
+
+
+<%# add a section to view the discussions on this project %>
+<% @discussions.each do |d| %>
+	<%= d.title %>
+	<br>
+	<%= d.description %>
+	<br>
+	<%= button_to "Delete", project_discussion_path(@project, d), method: :delete, data: { confirm: "Are you sure you want to delete this discussion?" } %>
+	<hr>
+<% end %>
+
+
+
+

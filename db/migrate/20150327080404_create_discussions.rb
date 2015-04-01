@@ -3,6 +3,7 @@ class CreateDiscussions < ActiveRecord::Migration
     create_table :discussions do |t|
       t.text :title
       t.text :description
+      t.references :project, index: true, foreign_key: true
 
       t.timestamps null: false
     end

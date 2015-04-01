@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
 
+	before_action :find_project, only: [:show, :edit, :update, :destroy]
+
+
 	#lets add a search bar to search for specific projects
 	def search
 		#call the method search_result from my model
@@ -36,20 +39,23 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		#need to grab the project by its ID
-		@project = Project.find(params[:id])
+		#use this to display the discussions that are related to
+		#the specific project
+		@discussions = @project.discussions
+		#this is for the new disussion form
+		@discussion = Discussion.new
 	end
 
 	def edit
 		#need to grab the project for this page by its ID
-		@project = Project.find(params[:id])
+
 	end
 
 
 	def update
 		#if the update is successful, redirect to the show page
 		#if not successful, go to the edit page
-		@project = Project.find(params[:id])
+
 		if @project.update(project_params)
 			redirect_to project_path(@project)
 		else
@@ -58,7 +64,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def destroy
-		@project = Project.find(params[:id])
 		@project.destroy
 		redirect_to projects_path
 	end
@@ -71,6 +76,10 @@ class ProjectsController < ApplicationController
 		#strong params authentification
 		project_params = params.require(:project).permit(:title, :description, :due_date)
 
+	end
+
+	def find_project
+		@project = Project.find(params[:id])
 	end
 
 

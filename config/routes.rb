@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get "/contact" => "home#contact", as: :contact
 
 
-  #routes for projects
-  resources :projects
+  #routes for projects and discussions
+  resources :projects do
+  	resources :discussions
+  end
 
 
   #route for my search results
