@@ -1,7 +1,9 @@
 class DiscussionsController < ApplicationController
 
 	def create
-		@discussion = Discussion.new(disc_params)
+		#@discussion = Discussion.new(disc_params)
+		#make a new discussion under the users name
+		@discussion = current_user.discussions.new(disc_params)
 		@project = Project.find(params[:project_id])
 
 		#attach the discussion to the project

@@ -10,6 +10,7 @@ class Task < ActiveRecord::Base
 
 	#-ASSOCIATIONS------------------------------
 	belongs_to :project
+	belongs_to :user
 	has_many :task_comments
 
 

@@ -3,7 +3,9 @@ class TaskCommentsController < ApplicationController
 
 	#--ACTIONS--------------------------------------
 	def create
-		@task_comment = TaskComment.new(task_comment_params)
+		#@task_comment = TaskComment.new(task_comment_params)
+		@task_comment = current.user.taskcomments.new(task_comment_params)
+
 		@task = Task.find(params[:task_id])
 		@task_comment.task = @task
 		if @task_comment.save

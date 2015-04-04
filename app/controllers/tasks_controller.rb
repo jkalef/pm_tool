@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
 
 	#--BEFORE ACTIONS-----------------------------------------
-	before_action :find_project, only: [:create, :update] 
-	before_action :find_task
+	before_action :find_project 
+	before_action :find_task, only: [:update, :show]
 
 
 	#--ACTIONS------------------------------------------------
 	def create
-		@task = Task.new(task_params)
+		#@task = Task.new(task_params)
+		@task = current_user.tasks.new(task_params)
+
 		@task.project = @project
 
 		if @task.save

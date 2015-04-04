@@ -15,6 +15,17 @@
 <hr>
 <br>
 
+<%# display username if you're signed in, with a sign-out button %>
+<% if user_signed_in? %>
+	<%= current_user.display_name %> 
+	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
+
+<%= flash[:notice] || flash[:alert] %>
+
+<br>
+<br>
+
 <%= form_tag("/search", method: "get") do %>
   		<%= label_tag(:search_word, "Search for:") %>
   		<%= text_field_tag(:search_word) %>

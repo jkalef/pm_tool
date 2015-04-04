@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+
+  devise_for :users
+
   #home route to handle the homeepage (index action)
   root "home#index"
 
@@ -28,4 +31,5 @@ Rails.application.routes.draw do
     resources :task_comments
   end
   
+
 end

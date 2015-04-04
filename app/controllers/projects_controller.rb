@@ -27,7 +27,8 @@ class ProjectsController < ApplicationController
 
 	def create
 		#create a new project...pass values through strong params authorization
-		@project = Project.new(project_params)	
+		#@project = Project.new(project_params)	
+		@project = current_user.projects.new(project_params)
 
 		#if the project is saved, then render the project page, 
 		#else, render the new project page again w/ the errors
