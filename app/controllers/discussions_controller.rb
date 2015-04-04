@@ -23,6 +23,38 @@ class DiscussionsController < ApplicationController
 	end	
 
 
+	def show
+		@comment = Comment.new
+		@discussion = Discussion.find(params[:id])
+		#@project = Project.find(params[:project_id])
+
+		#use this to display the comments that are related to
+		#the specific discussion
+		#@comments = @discussion.comments
+		#this is for the new comments form	
+	end
+
+
+	def edit
+		#find the discussion by its id to show
+		@project = Project.find(params[:project_id])
+		@discussion = Discussion.find(params[:id])
+	end
+
+
+	def update
+		@project = Project.find(params[:project_id])
+		@discussion = Discussion.find(params[:id])
+		
+		if @discussion.update(disc_params)
+			redirect_to @project
+		else
+			render "/projects/show"
+		end
+		
+	end
+
+
 	private
 
 	def disc_params

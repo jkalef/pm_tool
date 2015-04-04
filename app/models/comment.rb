@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
 
 
 	#VALIDATIONS-----------------------------
-	validates :comment, presence: true
+	validates :body, presence: true
 
 	#-----------------------------------------
 

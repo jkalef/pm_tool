@@ -1,0 +1,20 @@
+<h2><%= @discussion.title %></h2>
+<p><%= @discussion.description %></p>
+<p><%= @discussion.project.title %></p>
+
+
+<h2>Add A comment To This Discussion</h2>
+
+
+<%# add a form to add a new comment to this discussion %>
+<%= form_for @comment, url: discussion_comments_path(@discussion) do |f| %>
+	<%= f.label :body %>
+	<%= f.text_area :body %>
+	<br>
+	<%= f.submit "Submit Comment" %>
+<% end %>
+
+<%# view all of the comments relating to this discussion %>
+<% @discussion.comments.each do |comment| %>
+	<%= comment.body %>
+<% end %>

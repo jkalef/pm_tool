@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
 
 	#---ASSOCIATIONS-----------------------------
 	has_many :discussions, dependent: :destroy
+	has_many :tasks, dependent: :destroy
 
 
 	#VALIDATIONS----------------------------------

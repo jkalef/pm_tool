@@ -1,0 +1,29 @@
+<h1>Task Page</h1>
+<p><%= @task.project.title %> -- <%= @task.title %></p>
+<br>
+<br>
+<h3><%= @task.title %></h3>
+<h3><%= @task.due_date %></h3>
+<br>
+<br>
+
+
+<%# add a form to create a new task comment %>
+<%= form_for @task_comment, url: task_task_comments_path(@task) do |f| %>
+	<%= f.text_area :body, placeholder: "Your Task Comment Here" %>
+	<br>
+	<%= f.submit "Submit Task Comment" %>
+<% end %>
+
+
+<%# view the task_comments %>
+<p>
+	<% @task_comments.each do |comment| %>
+		<%= comment.body %>
+		<br>
+		<%= comment.created_at %>
+	<% end %>
+</p>
+<hr>
+
+

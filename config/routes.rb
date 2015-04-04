@@ -10,12 +10,22 @@ Rails.application.routes.draw do
 
   #routes for projects and discussions
   resources :projects do
-  	resources :discussions
+  	resources :discussions 
   end
-
 
   #route for my search results
   get "/search" => "projects#search", as: :search
 
+  resources :discussions do
+    resources :comments
+  end
+
+  resources :projects do
+    resources :tasks
+  end
+
+  resources :tasks do
+    resources :task_comments
+  end
   
 end

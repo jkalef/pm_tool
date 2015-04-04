@@ -44,6 +44,13 @@ class ProjectsController < ApplicationController
 		@discussions = @project.discussions
 		#this is for the new disussion form
 		@discussion = Discussion.new
+
+		@tasks = @project.tasks
+
+		#show a different table for both completed and incomplete tasks
+		@completed_tasks = @tasks.where(status: "complete")
+		@incomplete_tasks = @tasks.where(status: "incomplete")
+		@task = Task.new
 	end
 
 	def edit
