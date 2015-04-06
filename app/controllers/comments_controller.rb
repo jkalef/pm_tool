@@ -11,8 +11,26 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to project_discussion_path(@discussion.project, @discussion)
 		else
-			render text: "Where am I supposed to go?"
+			render "Where do I go?"
 		end
+	end
+
+	def edit
+		#find the discussion & the comment
+		@comment = Comment.find(params[:id])
+		@discussion = Discussion.find(params[:discussion_id])
+	end
+
+	def update
+		@comment = Comment.find(params[:id])
+		@discussion = Discussion.find(params[:discussion_id])
+
+		if @comment.update(comment_params)
+		 	redirect_to project_discussion_path(@discussion.project, @discussion)
+		else
+			render "Where do I go?"
+		end
+
 	end
 
 

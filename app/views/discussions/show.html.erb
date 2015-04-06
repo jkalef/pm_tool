@@ -17,4 +17,7 @@
 <%# view all of the comments relating to this discussion %>
 <% @discussion.comments.each do |comment| %>
 	<%= comment.body %>
+	<br>
+	<%= link_to "Edit Your Comment", edit_discussion_comment_path(@discussion, comment) %>
+	<hr>
 <% end %>

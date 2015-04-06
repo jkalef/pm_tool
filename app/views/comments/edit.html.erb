@@ -1,0 +1,9 @@
+<h2>Edit Your Comment</h2>
+
+<%# add a form to add a new comment to this discussion %>
+<%= form_for @comment, url: discussion_comment_path(@discussion, @comment) do |f| %>
+	<%= f.label :body %>
+	<%= f.text_area :body %>
+	<br>
+	<%= f.submit "Update" %>
+<% end %>

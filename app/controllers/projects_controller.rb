@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 	def index
 
 		#want to list all of my projects, sorted by most recent
-		@projects = Project.order("created_at DESC")
+		@projects = current_user.projects.order("created_at DESC")
 	end
 
 	def new
