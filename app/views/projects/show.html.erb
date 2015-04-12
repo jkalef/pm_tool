@@ -7,6 +7,9 @@
 <br>
 <%= @project.due_date %>
 <br>
+<% @project.member_users.each do |x| %>
+	<%= x.email %>
+<% end %>
 <br>
 
 <%# link to edit the project %>
@@ -100,6 +103,13 @@
 <% end %>
 </div>
 
+<div>
+	<% @users.each do |user| %>
+		<%= user.email %>
+		<%= link_to "Add Member", project_members_path(@project, member: {user_id: user.id}), method: :post %>
+		<hr>
+	<% end %>
+</div>
 
 
 

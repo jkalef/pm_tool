@@ -52,6 +52,7 @@ class ProjectsController < ApplicationController
 		@completed_tasks = @tasks.where(status: "complete")
 		@incomplete_tasks = @tasks.where(status: "incomplete")
 		@task = Task.new
+		@users = User.all
 	end
 
 	def edit
@@ -82,7 +83,7 @@ class ProjectsController < ApplicationController
 
 	def project_params
 		#strong params authentification
-		project_params = params.require(:project).permit(:title, :description, :due_date)
+		project_params = params.require(:project).permit(:title, :description, :due_date, {user_ids: []})
 
 	end
 

@@ -5,6 +5,10 @@ class Project < ActiveRecord::Base
 	has_many :tasks, dependent: :destroy
 	belongs_to :user
 
+	#for many to many through members
+	has_many :members, dependent: :destroy
+	has_many :member_users, through: :members, source: :user
+
 
 	#VALIDATIONS----------------------------------
 	validates :title, presence: true,
